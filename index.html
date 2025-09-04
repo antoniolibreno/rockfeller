@@ -1,11 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rockfeller – Base Starter (Clone de Estudo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div>Central de atendimento: <a href="tel:+550000000000">(00) 0000-0000</a></div>
+      <div><a href="#unidades">Encontre uma unidade</a></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="#home"><span class="logo"></span><span>Rockfeller</span></a>
+      <nav class="nav-links">
+        <a href="#cursos">Cursos</a>
+        <a href="#metodologia">Metodologia</a>
+        <a href="#unidades">Unidades</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn ghost" href="#contato">Fale com a gente</a>
+        <a class="btn primary" href="#matricula">Quero me matricular</a>
+        <button class="hamb" id="hamb"><span></span></button>
+      </div>
+    </div>
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#cursos">Cursos</a>
+      <a href="#metodologia">Metodologia</a>
+      <a href="#unidades">Unidades</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Fale com a gente</a>
+      <a href="#matricula">Quero me matricular</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero reveal" id="home">
+    <div class="container">
+      <div class="reveal">
+        <span class="chip">Aprenda idiomas do seu jeito</span>
+        <h1>Inglês para acelerar sua carreira — do básico ao avançado.</h1>
+        <p>Uma base moderna para você construir sua réplica.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#cursos">Ver cursos</a>
+          <a class="btn ghost" href="#metodologia">Como funciona</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="hero-illus"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cursos -->
+  <section class="section reveal" id="cursos">
+    <div class="container">
+      <h2>Cursos</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="media"></div>
+          <div class="body">
+            <h3>Inglês Intensivo</h3>
+            <p>Ritmo acelerado para quem quer resultados rápidos.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="media"></div>
+          <div class="body">
+            <h3>Conversação</h3>
+            <p>Prática guiada em turmas reduzidas.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="media"></div>
+          <div class="body">
+            <h3>Teens & Kids</h3>
+            <p>Aprendizado lúdico e divertido para jovens.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="section alt reveal" id="depoimentos">
+    <div class="container">
+      <h2>Depoimentos</h2>
+      <div class="testimonials">
+        <div class="ts-track" id="tsTrack">
+          <div class="ts-item">"Amei as aulas e a didática!"</div>
+          <div class="ts-item">"Material online ajuda muito."</div>
+          <div class="ts-item">"Metodologia clara e dinâmica."</div>
+        </div>
+        <div class="ts-controls">
+          <button class="dot active" data-slide="0"></button>
+          <button class="dot" data-slide="1"></button>
+          <button class="dot" data-slide="2"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section reveal" id="faq">
+    <div class="container">
+      <h2>Perguntas Frequentes</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-q">Quais modalidades existem? <span>+</span></div>
+          <div class="faq-a"><p>Presencial, online e híbrido.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Tem teste de nivelamento? <span>+</span></div>
+          <div class="faq-a"><p>Sim, grátis e online.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Sua Marca. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
