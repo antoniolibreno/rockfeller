@@ -1,7 +1,5 @@
-// Ano automático
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Menu mobile
 const hamb = document.getElementById("hamb");
 const mobileMenu = document.getElementById("mobileMenu");
 hamb.addEventListener("click", () => {
@@ -11,7 +9,6 @@ mobileMenu.querySelectorAll("a").forEach(link => {
   link.addEventListener("click", () => mobileMenu.style.display = "none");
 });
 
-// Carrossel depoimentos
 const track = document.getElementById("tsTrack");
 const dots = document.querySelectorAll(".dot");
 let index = 0;
@@ -24,13 +21,11 @@ function showSlide(i) {
 }
 dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
 
-// Auto-play depoimentos
 setInterval(() => {
   index = (index + 1) % dots.length;
   showSlide(index);
 }, 5000);
 
-// FAQ acordeão
 document.querySelectorAll(".faq-q").forEach(q => {
   q.addEventListener("click", () => {
     const ans = q.nextElementSibling;
@@ -38,7 +33,6 @@ document.querySelectorAll(".faq-q").forEach(q => {
   });
 });
 
-// Scroll Reveal Animation
 const reveals = document.querySelectorAll(".reveal");
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
