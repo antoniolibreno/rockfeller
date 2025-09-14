@@ -1,12 +1,13 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+
 const hamb = document.getElementById("hamb");
 const mobileMenu = document.getElementById("mobileMenu");
 hamb.addEventListener("click", () => {
   mobileMenu.style.display = mobileMenu.style.display === "flex" ? "none" : "flex";
 });
-mobileMenu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => mobileMenu.style.display = "none");
+hamb.addEventListener("click", () => {
+  mobileMenu.classList.toggle("active");
 });
 
 const track = document.getElementById("tsTrack");
