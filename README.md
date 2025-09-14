@@ -1,5 +1,7 @@
 # Configurar o Git - LER O FINAL DO README!!!
 
+## Link do docs com a documentação: https://docs.google.com/document/d/1IdAJWIq6qyB4R9irDEIZaj65IVJ8dmDAbtXvEgwK4mQ/edit?usp=sharing
+
 ## Configuração inicial - fazer isso somente na primeira vez
 ```bash
 git config --global user.name "SEU-NOME"
