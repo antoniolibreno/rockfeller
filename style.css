@@ -259,7 +259,7 @@ h2 {
 }
 
 .card .media img {
-  background-image:url("images/Fundo\ 2.webp");
+  background-color: #f39821;
   width: 100%;
   height: 300px;
   object-fit: cover;
