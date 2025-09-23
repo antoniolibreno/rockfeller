@@ -203,8 +203,10 @@ header.site {
   background-image: url("images/Adults\ 4\ \(1\).webp");
   background-size: cover;
   background-position: center;
-  width: 400px;
+  width: 100%; /* Ocupa 100% do espaço que o grid lhe dá */
+  max-width: 400px; /* Limita a largura máxima em telas grandes */
   height: 410px;
+  margin: 0 auto; /* Garante a centralização quando o grid vira 1 coluna */
 }
 
 .hero.reveal.visible {
@@ -343,6 +345,8 @@ footer {
   transform:translateY(0); 
 }
 
+
+
 @media (max-width: 900px) {
   .nav-links { 
     display:none; 
@@ -353,6 +357,12 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .topbar .container {
+    flex-direction: column; /* Coloca os itens em coluna */
+    align-items: center;    /* Centraliza os itens */
+    gap: 0.25rem;           /* Adiciona um pequeno espaço entre eles */
+  }
+
   .hero .container { 
     grid-template-columns:1fr; 
     text-align:center; 
@@ -361,11 +371,17 @@ footer {
     justify-content:center; 
   }
   .hero-illus { 
-    height:200px; 
+    height: 250px; /* Aumentei um pouco para ficar mais proporcional */
   }
 }
 
 @media (max-width: 600px) {
+  .topbar .container {
+    flex-direction: column; /* Coloca os itens em coluna */
+    align-items: center;    /* Centraliza os itens */
+    gap: 0.25rem;           /* Adiciona um pequeno espaço entre eles */
+  }
+
   h1 { 
     font-size:1.8rem; 
   }
