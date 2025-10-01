@@ -5,10 +5,8 @@ const hamb = document.getElementById("hamb");
 const mobileMenu = document.getElementById("mobileMenu");
 
 hamb.addEventListener("click", () => {
-  // Alterna a classe 'active' no menu para exibi-lo/escondê-lo via CSS
   mobileMenu.classList.toggle("active");
   
-  // Adiciona/remove a classe no body para travar a rolagem da página
   document.body.classList.toggle("no-scroll");
 });
 
