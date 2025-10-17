@@ -12,16 +12,9 @@
 
 </head>
 <body>
-  <div class="topbar">
-    <div class="container">
-      <div>Central de atendimento: <a href="https://api.whatsapp.com/send/?phone=5545984070294&text=Estou+entrando+em+contato+atrav%C3%A9s+do+site+criado+pelos+estudantes+de+ADS+da+Faculdade+Donaduzzi&type=phone_number&app_absent=0">(45) 98407-0294</a></div>
-      <div><a href="https://www.google.com/maps/search/Rockfeller/@-24.7255027,-54.3849289,9z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D">Encontre uma unidade</a></div>
-    </div>
-  </div>
-
   <header class="site">
     <div class="container nav">
-      <a class="brand" href=""><span class="logo"></span><span>
+      <a class="brand" href="#home"><span class="logo"></span><span>
         <img src="images/LogoRockfeller Principal Azul.webp" alt="Rockfeller">
       </span></a>
       <nav class="nav-links">
@@ -33,24 +26,36 @@
       </nav>
       <div class="nav-cta">
         <a class="btn ghost" href="https://api.whatsapp.com/send/?phone=5545984070294&text=Estou+entrando+em+contato+atrav%C3%A9s+do+site+criado+pelos+estudantes+de+ADS+da+Faculdade+Donaduzzi&type=phone_number&app_absent=0">Fale com a gente</a>
-        <a class="btn primary" href="#matricula">Quero me matricular</a>
-        <button class="hamb" id="hamb"><span></span></button>
+        <a class="btn primary js-open-matricula" href="#">Quero me matricular</a>
+        <button class="hamb" id="hamb" aria-label="Abrir menu de navegação"><span></span></button>
       </div>
     </div>
     <div class="container mobile-menu" id="mobileMenu">
-      <a href="#cursos">Cursos</a>
-      <a href="#metodologia">Metodologia</a>
-      <a href="#unidades">Unidades</a>
-      <a href="#depoimentos">Depoimentos</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contato">Fale com a gente</a>
-      <a href="#matricula">Quero me matricular</a>
+      <a href="#cursos" class="mobile-link">Cursos</a>
+      <a href="#metodologia" class="mobile-link">Metodologia</a>
+      <a href="#unidades" class="mobile-link">Unidades</a>
+      <a href="#depoimentos" class="mobile-link">Depoimentos</a>
+      <a href="#faq" class="mobile-link">FAQ</a>
+      <a href="https://api.whatsapp.com/send/?phone=5545984070294&text=Estou+entrando+em+contato+atrav%C3%A9s+do+site+criado+pelos+estudantes+de+ADS+da+Faculdade+Donaduzzi&type=phone_number&app_absent=0" class="mobile-link">Fale com a gente</a>
+      <a href="#" class="mobile-link js-open-matricula">Quero me matricular</a>
     </div>
   </header>
 
   <section class="hero reveal" id="home">
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="hero-track" id="heroTrack">
+        <div class="hero-slide">
+          <img src="images/fundoslide1.webp" alt="Mulher sorrindo com fundo laranja" loading="lazy">
+        </div>
+        <div class="hero-slide">
+          <img src="images/fundoslide2.webp" alt="Promoção Indique e Ganhe" loading="lazy">
+        </div>
+      </div>
+      <div class="hero-controls">
+      </div>
+    </div>
     <div class="container">
-      <div class="reveal">
+      <div class="hero-content reveal">
         <span class="chip">Aprenda idiomas do seu jeito!</span>
         <h1>Inglês para acelerar sua carreira — do básico ao avançado.</h1>
         <p>Uma base moderna para você construir sua réplica.</p>
@@ -58,9 +63,6 @@
           <a class="btn primary" href="#cursos">Ver cursos</a>
           <a class="btn ghost" href="#metodologia">Como funciona</a>
         </div>
-      </div>
-      <div class="reveal">
-        <div class="hero-illus"></div>
       </div>
     </div>
   </section>
@@ -104,19 +106,137 @@
   </div>
 </section>
 
+  <section class="section alt reveal" id="metodologia">
+    <div class="container">
+      <h2>Nossa Metodologia</h2>
+      <div class="metodologia-grid">
+        <div class="metodologia-image">
+          <div class="metodologia-carousel" id="metodologiaCarousel">
+            <div class="metodologia-track" id="metodologiaTrack">
+              <div class="metodologia-slide">
+                <img src="images/homealunos1.webp" alt="Alunos em sala de aula" loading="lazy" class="carousel-img-cover">
+              </div>
+              <div class="metodologia-slide">
+                <img src="images/homealunos2.webp" alt="Alunos interagindo em grupo" loading="lazy" class="carousel-img-cover">
+              </div>
+            </div>
+            <div class="metodologia-controls">
+              <button class="metodologia-dot active" data-slide="0"></button>
+              <button class="metodologia-dot" data-slide="1"></button>
+            </div>
+          </div>
+        </div>
+        <div class="metodologia-text">
+          <div class="metodologia-item">
+            <h3>Conversação desde o primeiro dia</h3>
+            <p>Acreditamos que a prática leva à perfeição. Nossas aulas são focadas em conversação para que você ganhe fluência e confiança.</p>
+          </div>
+          <div class="metodologia-item">
+            <h3>Turmas Reduzidas</h3>
+            <p>Com menos alunos por turma, você tem mais oportunidades de participar e recebe atenção personalizada do professor.</p>
+          </div>
+          <div class="metodologia-item">
+            <h3>Material Didático Moderno</h3>
+            <p>Utilizamos materiais atualizados e relevantes, incluindo recursos online interativos para você praticar a qualquer hora.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="unidades">
+    <div class="container">
+      <h2>Nossa Unidade</h2>
+      <div class="unidades-grid">
+        <div class="unidades-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57934.59986584995!2d-53.7807456!3d-24.7339031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f39581756d8a9b%3A0x7e23450fbe69437!2sRockfeller%20Language%20Center%20-%20Toledo%2C%20PR!5e0!3m2!1spt-BR!2sbr!4v1721244305813!5m2!1spt-BR!2sbr"
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="unidades-info">
+          <h3>Venha nos visitar!</h3>
+          <p>Estamos localizados no coração da cidade, com fácil acesso e estacionamento. Nossa equipe está pronta para receber você e apresentar nossa estrutura.</p>
+          <p><strong>Endereço:</strong> R. Dom Pedro II, 1581 - Centro, Toledo - PR, 85901-270</p>
+          <p><strong>Telefone:</strong> <a href="https://api.whatsapp.com/send/?phone=5545984070294&text=Estou+entrando+em+contato+atrav%C3%A9s+do+site+criado+pelos+estudantes+de+ADS+da+Faculdade+Donaduzzi&type=phone_number&app_absent=0">(45) 98407-0294</a></p>
+          <a href="https://www.google.com/maps/dir//Rockfeller+Language+Center+-+Toledo/data=!4m2!4m1!3e0?sa=X" target="_blank" class="btn primary">Ver no mapa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section alt reveal" id="depoimentos">
     <div class="container">
-      <h2>Depoimentos</h2>
+      <h2>O que nossos alunos dizem</h2>
       <div class="testimonials">
         <div class="ts-track" id="tsTrack">
-          <div class="ts-item">"Amei as aulas e a didática!"</div>
-          <div class="ts-item">"Material online ajuda muito."</div>
-          <div class="ts-item">"Metodologia clara e dinâmica."</div>
+          <div class="ts-item">
+            <div class="testimonial-card">
+              <p>"A metodologia focada em conversação fez toda a diferença. Em poucos meses, minha confiança para falar inglês no trabalho aumentou absurdamente. Recomendo demais!"</p>
+              <div class="ts-author">
+                <img src="images/Adults 1.webp" alt="Foto da aluna Maria Silva" id="ts-avatar-1">
+                <div>
+                  <strong>Maria Silva</strong>
+                  <span>Aluna de Inglês Intensivo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ts-item">
+            <div class="testimonial-card">
+              <p>"Matriculei meu filho no curso Kids e estou impressionada com o quanto ele aprende brincando. A equipe é super atenciosa e o material didático é excelente."</p>
+              <div class="ts-author">
+                <img src="images/Adults 3.webp" alt="Foto da aluna Ana Costa" id="ts-avatar-2">
+                <div>
+                  <strong>Ana Costa</strong>
+                  <span>Mãe de Aluno Kids</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ts-item">
+            <div class="testimonial-card">
+              <p>"As turmas reduzidas realmente funcionam. O professor consegue dar atenção para todo mundo e o ambiente é ótimo para praticar sem medo de errar."</p>
+              <div class="ts-author">
+                <img src="images/Teens-2.webp" alt="Foto do aluno Carlos Lima" id="ts-avatar-3">
+                <div>
+                  <strong>Carlos Lima</strong>
+                  <span>Aluno de Conversação</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ts-item">
+            <div class="testimonial-card">
+              <p>"O curso para viagens foi perfeito! Aprendi o essencial para me comunicar com confiança no exterior. As simulações de situações reais em aeroportos e hotéis foram muito úteis."</p>
+              <div class="ts-author">
+                <img src="images/Teens-3.webp" alt="Foto do aluno Lucas Mendes" id="ts-avatar-4">
+                <div>
+                  <strong>Lucas Mendes</strong>
+                  <span>Aluno de Inglês para Viagens</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ts-item">
+            <div class="testimonial-card">
+              <p>"Sempre quis aprender espanhol e a Rockfeller tornou isso possível. Os professores são nativos e a imersão na cultura hispânica durante as aulas é fantástica."</p>
+              <div class="ts-author">
+                <img src="images/Teens-6.webp" alt="Foto da aluna Juliana Santos" id="ts-avatar-5">
+                <div>
+                  <strong>Juliana Santos</strong>
+                  <span>Aluna de Espanhol Básico</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="ts-controls">
-          <button class="dot active" data-slide="0"></button>
-          <button class="dot" data-slide="1"></button>
-          <button class="dot" data-slide="2"></button>
         </div>
       </div>
     </div>
@@ -124,23 +244,80 @@
 
   <section class="section reveal" id="faq">
     <div class="container">
-      <h2>Perguntas Frequentes</h2>
+      <h2>Ainda tem dúvidas?</h2>
       <div class="faq">
         <div class="faq-item">
-          <div class="faq-q">Quais modalidades existem? <span>+</span></div>
-          <div class="faq-a"><p>Presencial, online e híbrido.</p></div>
+          <div class="faq-q">
+            <span>Quais modalidades de curso a Rockfeller oferece?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-a"><p>Oferecemos cursos nas modalidades presencial, 100% online com aulas ao vivo, e também opções híbridas para maior flexibilidade. Você pode escolher a que melhor se adapta à sua rotina.</p></div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Tem teste de nivelamento? <span>+</span></div>
-          <div class="faq-a"><p>Sim, grátis e online.</p></div>
+          <div class="faq-q">
+            <span>Preciso fazer um teste de nivelamento?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-a"><p>Sim! Oferecemos um teste de nivelamento completo e gratuito para garantir que você comece na turma certa para o seu nível de conhecimento, aproveitando ao máximo as aulas desde o primeiro dia.</p></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Botão Fixo de Matrícula -->
+  <button class="fixed-matricula-btn js-open-matricula">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M11.9999 1.5C6.20101 1.5 1.5 6.20101 1.5 12C1.5 17.799 6.20101 22.5 11.9999 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 11.9999 1.5ZM12 20.5C7.30558 20.5 3.5 16.6944 3.5 12C3.5 7.30558 7.30558 3.5 12 3.5C16.6944 3.5 20.5 7.30558 20.5 12C20.5 16.6944 16.6944 20.5 12 20.5ZM16.5303 8.96967L11.25 14.25L8.46967 11.4697C8.17678 11.1768 7.7019 11.1768 7.40901 11.4697C7.11612 11.7626 7.11612 12.2374 7.40901 12.5303L10.6893 15.8107C10.9822 16.1036 11.4571 16.1036 11.75 15.8107L17.5303 10.0303C17.8232 9.73741 17.8232 9.26254 17.5303 8.96967C17.2374 8.67678 16.8232 8.67678 16.5303 8.96967Z"></path></svg>
+    <span>Matricule-se</span>
+  </button>
+
+  <!-- Modal de Matrícula -->
+  <div class="matricula-overlay" id="matriculaOverlay">
+    <div class="matricula-modal">
+      <button class="close-modal" id="closeModalBtn" aria-label="Fechar formulário">&times;</button>
+      <div class="form-container">
+        <h2>Faça sua Matrícula e Teste de Nível</h2>
+        <p class="section-subtitle">Preencha o formulário abaixo para iniciar sua jornada conosco. As perguntas nos ajudarão a entender seu nível atual.</p>
+        
+        <form class="form-matricula">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nome">Nome Completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone (WhatsApp)</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 90000-0000" required>
+            </div>
+          </div>
+
+          <div class="quiz-section">
+            <p class="quiz-title">Teste Rápido de Nivelamento</p>
+            
+            <div class="form-group quiz-question">
+              <p>1. Which sentence is correct?</p>
+              <div class="options"><label><input type="radio" name="q1" value="a"> He don't like coffee.</label><label><input type="radio" name="q1" value="b"> He doesn't like coffee.</label><label><input type="radio" name="q1" value="c"> He not like coffee.</label></div>
+            </div>
+            <div class="form-group quiz-question">
+              <p>2. I'm looking forward ___ you soon.</p>
+              <div class="options"><label><input type="radio" name="q2" value="a"> to see</label><label><input type="radio" name="q2" value="b"> seeing</label><label><input type="radio" name="q2" value="c"> to seeing</label></div>
+            </div>
+            <div class="form-group quiz-question">
+              <p>3. If I ___ you, I would study more.</p>
+              <div class="options"><label><input type="radio" name="q3" value="a"> was</label><label><input type="radio" name="q3" value="b"> were</label><label><input type="radio" name="q3" value="c"> am</label></div>
+            </div>
+          </div>
+          <button type="submit" class="btn primary form-submit-btn">Enviar e ver resultado</button>
+        </form>
+      </div>
+    </div>
+
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> Sua Marca. Todos os direitos reservados.</p>
+      <p>© <span id="year"></span> Rockfeller. Todos os direitos reservados.</p>
     </div>
   </footer>
 
