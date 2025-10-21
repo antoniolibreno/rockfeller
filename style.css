@@ -260,23 +260,20 @@ h2 {
 }
 
 .card {
-    display: block;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
-    /* Garanta que esta linha de transição inclua 'all' */
-    transition: transform .3s, box-shadow .3s, all 0.5s ease-in-out;
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer; /* Adicione esta linha */
-    align-items: start;
+  display: block; /* faz o link ocupar o espaço inteiro */
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  transition: transform .3s, box-shadow .3s;
+  color: inherit;          /* mantém cor do texto */
+  text-decoration: none;   /* remove sublinhado */
 }
 
-.card:not(.expandido):hover {
-    transform: translateY(-8px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .08);
+.card:hover { 
+  transform: translateY(-8px); 
+  box-shadow:0 4px 8px rgba(0,0,0,.08);
 }
 
 .card .media img {
@@ -293,94 +290,6 @@ h2 {
 }
 
 .card h3 { margin-bottom:.5rem; }
-
-.card-conteudo {
-    padding: 20px;
-    position: relative; /* Importante para o botão fechar */
-}
-
-.conteudo-popup {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-}
-
-/* Estilos para o estado expandido (pop-up) */
-.card.expandido {
-    position: fixed;
-    /* Fica fixo na tela mesmo com rolagem */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* Centraliza o elemento na tela */
-    width: min(90vw, 600px);
-    /* Ocupa 90% da largura, no máximo 600px */
-    height: auto;
-    /* Altura se ajusta ao conteúdo */
-    max-height: 80vh;
-    /* Altura máxima de 80% da tela */
-    border-radius: 16px;
-    /* Mantém as bordas arredondadas */
-    z-index: 1000;
-    overflow-y: auto;
-    /* Permite rolar se o conteúdo for grande */
-    cursor: default;
-    /* Remove o cursor de "mãozinha" */
-}
-
-/* Esconde o conteúdo inicial do card quando ele vira pop-up */
-.card.expandido .card-conteudo>h2,
-.card.expandido .card-conteudo>p {
-    display: none;
-}
-
-.card.expandido .media {
-    display: none;
-    /* Esconde a imagem no pop-up */
-}
-
-.popup-imagem {
-  background-color: #f39821;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  object-fit: contain;
-  max-height: 250px; /* A altura máxima ainda limita o espaço */
-}
-
-/* Garante que o conteúdo do pop-up apareça */
-.card.expandido .conteudo-popup {
-    opacity: 1;
-    visibility: visible;
-}
-
-.fechar-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
-    /* Adiciona uma cor para o 'X' ser visível */
-    z-index: 1001; /* Garante que fique acima do conteúdo */
-}
-
-.conteudo-popup {
-  display: none;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-}
-
-.card.expandido .conteudo-popup {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-}
 
 .testimonials { 
   text-align:center; 
