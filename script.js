@@ -118,38 +118,3 @@ openModalBtns.forEach(btn => btn.addEventListener("click", openModal));
 closeModalBtn.addEventListener("click", closeModal);
 // Fecha o modal se clicar fora da área do formulário
 matriculaOverlay.addEventListener("click", (e) => { if (e.target === matriculaOverlay) closeModal(); });
-
-
-// --- CÓDIGO DO POP-UP ---
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. Seleciona TODOS os cards dentro da seção #cursos
-    const cards = document.querySelectorAll('#cursos .card');
-
-    // 2. Itera sobre cada card encontrado
-    cards.forEach(card => {
-        
-        // 3. Para cada card, encontra seu respectivo botão de fechar
-        const fecharBtn = card.querySelector('.fechar-btn');
-
-        // 4. Adiciona o evento de clique para ABRIR o pop-up
-        card.addEventListener('click', function(event) {
-            
-            // Verifica se o card já está expandido
-            // E impede que o clique no botão "fechar" ative este evento
-            if (!card.classList.contains('expandido') && !event.target.classList.contains('fechar-btn')) {
-                card.classList.add('expandido');
-            }
-        });
-
-        // 5. Adiciona o evento de clique para FECHAR o pop-up (se o botão existir)
-        if (fecharBtn) {
-            fecharBtn.addEventListener('click', function(event) {
-                // Impede que o clique no botão se propague para o card (evitando reabrir)
-                event.stopPropagation(); 
-                card.classList.remove('expandido');
-            });
-        }
-    });
-});
-matriculaOverlay.addEventListener("click", (e) => { if (e.target === matriculaOverlay) closeModal(); });
