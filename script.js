@@ -152,3 +152,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+matriculaOverlay.addEventListener("click", (e) => { if (e.target === matriculaOverlay) closeModal(); });

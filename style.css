@@ -511,7 +511,7 @@ h2 {
 .fixed-matricula-btn {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   z-index: 999;
   background-color: var(--primary);
   color: #fff;
@@ -542,9 +542,9 @@ h2 {
   background: rgba(15, 23, 42, 0.8);
   z-index: 1001;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 1rem;
+  align-items: flex-end;
+  justify-content: flex-end; /* Alinha o modal à direita */
+  padding: 0 1rem; /* Adiciona um espaçamento nas laterais */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -557,13 +557,12 @@ h2 {
 
 .matricula-modal {
   position: relative;
-  width: 100%;
-  max-width: 800px;
+  width: min(100%, 450px); /* Ocupa a largura total, com um máximo de 700px */
   max-height: 90vh;
   overflow-y: auto;
   background: var(--bg);
-  border-radius: 16px;
-  transform: translateX(-100%);
+  border-radius: 16px 16px 0 0; /* Cantos arredondados apenas no topo */
+  transform: translateY(100%); /* Animação de baixo para cima */
   transition: transform 0.4s ease-out;
   /* Esconde a barra de rolagem mas mantém a funcionalidade */
   -ms-overflow-style: none;  /* IE e Edge */
@@ -576,7 +575,7 @@ h2 {
 }
 
 .matricula-overlay.active .matricula-modal {
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .form-container {
