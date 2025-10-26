@@ -5,7 +5,7 @@ const mobileMenu = document.getElementById("mobileMenu");
 
 hamb.addEventListener("click", () => {
   mobileMenu.classList.toggle("active");
-  
+
   document.body.classList.toggle("no-scroll");
 });
 
@@ -95,7 +95,9 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, {
+  threshold: 0.15
+});
 reveals.forEach(r => observer.observe(r));
 
 // Lógica do Modal de Matrícula
@@ -117,4 +119,6 @@ function closeModal() {
 openModalBtns.forEach(btn => btn.addEventListener("click", openModal));
 closeModalBtn.addEventListener("click", closeModal);
 // Fecha o modal se clicar fora da área do formulário
-matriculaOverlay.addEventListener("click", (e) => { if (e.target === matriculaOverlay) closeModal(); });
+matriculaOverlay.addEventListener("click", (e) => {
+  if (e.target === matriculaOverlay) closeModal();
+});
