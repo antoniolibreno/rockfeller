@@ -1,5 +1,7 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,113 +10,156 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/webp" href="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/logo%20-03.webp">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/webp"
+        href="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/logo%20-03.webp">
 </head>
+
 <body>
 
-    <header class="header">
-        <div class="container header__container">
-            <a class="header__brand" href="#home">
-                <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/LogoRockfeller%20Principal%20Azul.webp" alt="Rockfeller Logo">
+    <!-- Cabeçalho -->
+    <header class="cabecalho">
+        <div class="container cabecalho-container">
+            <a class="cabecalho-marca" href="#inicio">
+                <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/LogoRockfeller%20Principal%20Azul.webp"
+                    alt="Rockfeller Logo">
             </a>
-            <nav class="header__nav">
-                <ul class="header__nav-list">
-                    <li><a href="#cursos" class="header__nav-link">Cursos</a></li>
-                    <li><a href="#metodologia" class="header__nav-link">Metodologia</a></li>
-                    <li><a href="#unidades" class="header__nav-link">Unidades</a></li>
-                    <li><a href="#depoimentos" class="header__nav-link">Depoimentos</a></li>
-                    <li><a href="#faq" class="header__nav-link">FAQ</a></li>
+            <nav class="cabecalho-navegacao">
+                <ul class="cabecalho-lista-navegacao">
+                    <li><a href="#cursos" class="cabecalho-link-navegacao">Cursos</a></li>
+                    <li><a href="#metodologia" class="cabecalho-link-navegacao">Metodologia</a></li>
+                    <li><a href="#unidades" class="cabecalho-link-navegacao">Unidades</a></li>
+                    <li><a href="#depoimentos" class="cabecalho-link-navegacao">Depoimentos</a></li>
+                    <li><a href="#faq" class="cabecalho-link-navegacao">FAQ</a></li>
                 </ul>
             </nav>
-            <div class="header__cta">
-                <a class="btn btn--ghost" href="https://api.whatsapp.com/send/?phone=5545984070294&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20cursos.">Fale com a gente</a>
-                <a class="btn btn--primary js-open-modal" href="#">Quero me matricular</a>
-                <button class="header__menu-toggle" id="menu-toggle" aria-label="Abrir menu">
-                    <i data-lucide="menu"></i>
+            <div class="cabecalho-cta">
+                <a class="botao botao-secundario"
+                    href="https://api.whatsapp.com/send/?phone=5545984070294&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20cursos.">Fale
+                    com a gente</a>
+                <a class="botao botao-primario js-abrir-modal" href="#">Quero me matricular</a>
+                <button class="cabecalho-botao-menu" id="botao-menu" aria-label="Abrir menu">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </button>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero" id="home">
-            <div class="hero__carousel" id="hero-carousel">
-                <div class="hero__track">
-                    <div class="hero__slide" style="background-image: url('https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/fundoslide1.webp');"></div>
-                    <div class="hero__slide" style="background-image: url('https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/fundoslide2.webp');"></div>
+        <!-- Seção Herói -->
+        <section class="heroi" id="inicio">
+            <div class="carrossel-heroi" id="carrossel-heroi">
+                <div class="trilha-heroi">
+                    <div class="slide-heroi"
+                        style="background-image: url('https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/fundoslide1.webp');">
+                    </div>
+                    <div class="slide-heroi"
+                        style="background-image: url('https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/fundoslide2.webp');">
+                    </div>
                 </div>
-                 <div class="hero__controls carousel-dots"></div>
+                <div class="pontos-carrossel"></div>
             </div>
-            <div class="container hero__content-container">
-                <div class="hero__content reveal">
+            <div class="container container-conteudo-heroi">
+                <div class="conteudo-heroi revelar">
                     <span class="chip">Aprenda idiomas do seu jeito!</span>
                     <h1>Inglês para acelerar sua carreira, do básico ao avançado.</h1>
                     <p>Metodologia moderna, turmas reduzidas e foco em conversação para você alcançar a fluência.</p>
-                    <div class="hero__cta">
-                        <a class="btn btn--primary" href="#cursos">Ver cursos</a>
-                        <a class="btn btn--ghost-light" href="#metodologia">Como funciona</a>
+                    <div class="cta-heroi">
+                        <a class="botao botao-primario" href="#cursos">Ver cursos</a>
+                        <a class="botao botao-secundario-claro" href="#metodologia">Como funciona</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section reveal" id="cursos">
+        <!-- Seção Cursos -->
+        <section class="secao revelar" id="cursos">
             <div class="container">
-                <h2 class="section__title">Nossos Cursos</h2>
-                <div class="cards-grid">
-                    <div class="card">
-                        <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Teens-4.webp" alt="Alunos jovens estudando inglês" class="card__img">
-                        <div class="card__body">
+                <h2 class="titulo-secao">Nossos Cursos</h2>
+                <div class="grade-cartoes">
+                    <div class="cartao">
+                        <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Teens-4.webp"
+                            alt="Alunos jovens estudando inglês" class="img-cartao">
+                        <div class="corpo-cartao">
                             <h3>Inglês Intensivo</h3>
                             <p>Um ritmo de estudo acelerado, ideal para quem busca resultados rápidos e eficientes.</p>
                         </div>
                     </div>
-                    <div class="card">
-                        <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Adults%202.webp" alt="Adultos em aula de conversação" class="card__img">
-                        <div class="card__body">
+                    <div class="cartao">
+                        <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Adults%202.webp"
+                            alt="Adultos em aula de conversação" class="img-cartao">
+                        <div class="corpo-cartao">
                             <h3>Conversação</h3>
-                            <p>Aulas com prática guiada e foco total na fala, em turmas reduzidas para maior imersão.</p>
+                            <p>Aulas com prática guiada e foco total na fala, em turmas reduzidas para maior imersão.
+                            </p>
                         </div>
                     </div>
-                    <div class="card">
-                        <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Kids%202.webp" alt="Crianças aprendendo inglês de forma lúdica" class="card__img">
-                        <div class="card__body">
+                    <div class="cartao">
+                        <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Kids%202.webp"
+                            alt="Crianças aprendendo inglês de forma lúdica" class="img-cartao">
+                        <div class="corpo-cartao">
                             <h3>Teens & Kids</h3>
-                            <p>Aprendizado lúdico e divertido, desenvolvido especialmente para crianças e adolescentes.</p>
+                            <p>Aprendizado lúdico e divertido, desenvolvido especialmente para crianças e adolescentes.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section section--alt reveal" id="metodologia">
+        <!-- Seção Metodologia -->
+        <section class="secao secao-alternada revelar" id="metodologia">
             <div class="container">
-                <h2 class="section__title">Nossa Metodologia</h2>
-                <div class="feature-grid">
-                    <div class="feature-grid__media">
-                       <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/homealunos1.webp" alt="Alunos em sala de aula">
+                <h2 class="titulo-secao">Nossa Metodologia</h2>
+                <div class="grade-destaques">
+                    <div class="midia-grade-destaques">
+                        <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/homealunos1.webp"
+                            alt="Alunos em sala de aula">
                     </div>
-                    <div class="feature-grid__content">
-                        <div class="feature-item">
-                            <div class="feature-item__icon"><i data-lucide="message-circle"></i></div>
+                    <div class="conteudo-grade-destaques">
+                        <div class="item-destaque">
+                            <div class="icone-item-destaque">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 & 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                    </svg>
+                            </div>
                             <div>
                                 <h3>Conversação desde o primeiro dia</h3>
-                                <p>Acreditamos que a prática leva à perfeição. Nossas aulas são focadas em conversação para que você ganhe fluência e confiança.</p>
+                                <p>Acreditamos que a prática leva à perfeição. Nossas aulas são focadas em conversação
+                                    para que você ganhe fluência e confiança.</p>
                             </div>
                         </div>
-                        <div class="feature-item">
-                           <div class="feature-item__icon"><i data-lucide="users"></i></div>
+                        <div class="item-destaque">
+                            <div class="icone-item-destaque">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                            </div>
                             <div>
                                 <h3>Turmas Reduzidas</h3>
-                                <p>Com menos alunos por turma, você tem mais oportunidades de participar e recebe atenção personalizada do professor.</p>
+                                <p>Com menos alunos por turma, você tem mais oportunidades de participar e recebe
+                                    atenção personalizada do professor.</p>
                             </div>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-item__icon"><i data-lucide="book-open"></i></div>
+                        <div class="item-destaque">
+                            <div class="icone-item-destaque">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
+                            </div>
                             <div>
                                 <h3>Material Didático Moderno</h3>
-                                <p>Utilizamos materiais atualizados e relevantes, incluindo recursos online interativos para você praticar a qualquer hora.</p>
+                                <p>Utilizamos materiais atualizados e relevantes, incluindo recursos online interativos
+                                    para você praticar a qualquer hora.</p>
                             </div>
                         </div>
                     </div>
@@ -122,34 +167,44 @@
             </div>
         </section>
 
-        <section class="section reveal" id="unidades">
+        <!-- Seção Unidades -->
+        <section class="secao revelar" id="unidades">
             <div class="container">
-                <h2 class="section__title">Nossa Unidade</h2>
-                <div class="location-grid">
-                    <div class="location-grid__map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.738098048999!2d-53.74681602381282!3d-24.838491877943534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f39581756d8a9b%3A0x7e23450fbe69437!2sRockfeller%20Language%20Center%20-%20Toledo%2C%20PR!5e0!3m2!1spt-BR!2sbr!4v1721244305813!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h2 class="titulo-secao">Nossa Unidade</h2>
+                <div class="grade-localizacao">
+                    <div class="mapa-grade-localizacao">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.738098048999!2d-53.74681602381282!3d-24.838491877943534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f39581756d8a9b%3A0x7e23450fbe69437!2sRockfeller%20Language%20Center%20-%20Toledo%2C%20PR!5e0!3m2!1spt-BR!2sbr!4v1721244305813!5m2!1spt-BR!2sbr"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    <div class="location-grid__info">
+                    <div class="info-grade-localizacao">
                         <h3>Venha nos visitar!</h3>
-                        <p>Estamos localizados no coração da cidade, com fácil acesso. Nossa equipe está pronta para receber você e apresentar nossa estrutura.</p>
+                        <p>Estamos localizados no coração da cidade, com fácil acesso. Nossa equipe está pronta para
+                            receber você e apresentar nossa estrutura.</p>
                         <p><strong>Endereço:</strong> R. Dom Pedro II, 1581 - Centro, Toledo - PR, 85901-270</p>
                         <p><strong>Telefone:</strong> <a href="tel:+5545984070294">(45) 98407-0294</a></p>
-                        <a href="https://www.google.com/maps/dir//Rockfeller+Language+Center+-+Toledo/data=!4m2!4m1!3e0?sa=X" target="_blank" class="btn btn--primary">Ver no mapa</a>
+                        <a href="https://www.google.com/maps/dir//Rockfeller+Language+Center+-+Toledo/data=!4m2!4m1!3e0?sa=X"
+                            target="_blank" class="botao botao-primario">Ver no mapa</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section section--alt reveal" id="depoimentos">
+        <!-- Seção Depoimentos -->
+        <section class="secao secao-alternada revelar" id="depoimentos">
             <div class="container">
-                <h2 class="section__title">O que nossos alunos dizem</h2>
-                <div class="testimonial-carousel" id="testimonial-carousel">
-                    <div class="testimonial__track">
-                        <div class="testimonial__slide">
-                            <div class="testimonial-card">
-                                <p>"A metodologia focada em conversação fez toda a diferença. Em poucos meses, minha confiança para falar inglês no trabalho aumentou absurdamente. Recomendo demais!"</p>
-                                <div class="testimonial__author">
-                                    <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Adults%201.webp" alt="Foto da aluna Maria Silva">
+                <h2 class="titulo-secao">O que nossos alunos dizem</h2>
+                <div class="carrossel-depoimentos" id="carrossel-depoimentos">
+                    <div class="trilha-depoimentos">
+                        <div class="slide-depoimentos">
+                            <div class="cartao-depoimento">
+                                <p>"A metodologia focada em conversação fez toda a diferença. Em poucos meses, minha
+                                    confiança para falar inglês no trabalho aumentou absurdamente. Recomendo demais!"
+                                </p>
+                                <div class="autor-depoimento">
+                                    <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Adults%201.webp"
+                                        alt="Foto da aluna Maria Silva">
                                     <div>
                                         <strong>Maria Silva</strong>
                                         <span>Aluna de Inglês Intensivo</span>
@@ -157,11 +212,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial__slide">
-                            <div class="testimonial-card">
-                                <p>"Matriculei meu filho no curso Kids e estou impressionada com o quanto ele aprende brincando. A equipe é super atenciosa e o material didático é excelente."</p>
-                                <div class="testimonial__author">
-                                    <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Adults%203.webp" alt="Foto da aluna Ana Costa">
+                        <div class="slide-depoimentos">
+                            <div class="cartao-depoimento">
+                                <p>"Matriculei meu filho no curso Kids e estou impressionada com o quanto ele aprende
+                                    brincando. A equipe é super atenciosa e o material didático é excelente."</p>
+                                <div class="autor-depoimento">
+                                    <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Adults%203.webp"
+                                        alt="Foto da aluna Ana Costa">
                                     <div>
                                         <strong>Ana Costa</strong>
                                         <span>Mãe de Aluno Kids</span>
@@ -169,11 +226,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial__slide">
-                            <div class="testimonial-card">
-                                <p>"As turmas reduzidas realmente funcionam. O professor consegue dar atenção para todo mundo e o ambiente é ótimo para praticar sem medo de errar."</p>
-                                <div class="testimonial__author">
-                                    <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Teens-2.webp" alt="Foto do aluno Carlos Lima">
+                        <div class="slide-depoimentos">
+                            <div class="cartao-depoimento">
+                                <p>"As turmas reduzidas realmente funcionam. O professor consegue dar atenção para todo
+                                    mundo e o ambiente é ótimo para praticar sem medo de errar."</p>
+                                <div class="autor-depoimento">
+                                    <img src="https://raw.githubusercontent.com/therocket-dev/rockfeller-website/main/images/Teens-2.webp"
+                                        alt="Foto do aluno Carlos Lima">
                                     <div>
                                         <strong>Carlos Lima</strong>
                                         <span>Aluno de Conversação</span>
@@ -182,70 +241,91 @@
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial__controls carousel-dots"></div>
+                    <div class="pontos-carrossel"></div>
                 </div>
             </div>
         </section>
 
-        <section class="section reveal" id="faq">
-            <div class="container faq-container">
-                <h2 class="section__title">Ainda tem dúvidas?</h2>
-                <div class="faq__list">
-                    <div class="faq__item">
-                        <button class="faq__question">
+        <!-- Seção FAQ -->
+        <section class="secao revelar" id="faq">
+            <div class="container container-faq">
+                <h2 class="titulo-secao">Ainda tem dúvidas?</h2>
+                <div class="lista-faq">
+                    <div class="item-faq">
+                        <button class="pergunta-faq">
                             <span>Quais modalidades de curso a Rockfeller oferece?</span>
-                            <i data-lucide="chevron-down" class="faq__icon"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-faq">
+                                <path d="m6 9 6 6 6-6" /></svg>
                         </button>
-                        <div class="faq__answer">
-                            <p>Oferecemos cursos nas modalidades presencial, 100% online com aulas ao vivo, e também opções híbridas para maior flexibilidade. Você pode escolher a que melhor se adapta à sua rotina.</p>
+                        <div class="resposta-faq">
+                            <p>Oferecemos cursos nas modalidades presencial, 100% online com aulas ao vivo, e também
+                                opções híbridas para maior flexibilidade. Você pode escolher a que melhor se adapta à
+                                sua rotina.</p>
                         </div>
                     </div>
-                    <div class="faq__item">
-                        <button class="faq__question">
+                    <div class="item-faq">
+                        <button class="pergunta-faq">
                             <span>Preciso fazer um teste de nivelamento?</span>
-                            <i data-lucide="chevron-down" class="faq__icon"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-faq">
+                                <path d="m6 9 6 6 6-6" /></svg>
                         </button>
-                        <div class="faq__answer">
-                            <p>Sim! Oferecemos um teste de nivelamento completo e gratuito para garantir que você comece na turma certa para o seu nível de conhecimento, aproveitando ao máximo as aulas desde o primeiro dia.</p>
+                        <div class="resposta-faq">
+                            <p>Sim! Oferecemos um teste de nivelamento completo e gratuito para garantir que você comece
+                                na turma certa para o seu nível de conhecimento, aproveitando ao máximo as aulas desde o
+                                primeiro dia.</p>
                         </div>
                     </div>
-                    <div class="faq__item">
-                        <button class="faq__question">
+                    <div class="item-faq">
+                        <button class="pergunta-faq">
                             <span>Qual a duração dos cursos?</span>
-                            <i data-lucide="chevron-down" class="faq__icon"></i>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-faq">
+                                <path d="m6 9 6 6 6-6" /></svg>
                         </button>
-                        <div class="faq__answer">
-                            <p>A duração varia conforme o curso e a sua dedicação. Nossos cursos regulares são estruturados em módulos semestrais, mas os intensivos podem ser concluídos em menos tempo. Fale com um de nossos consultores para um plano personalizado.</p>
+                        <div class="resposta-faq">
+                            <p>A duração varia conforme o curso e a sua dedicação. Nossos cursos regulares são
+                                estruturados em módulos semestrais, mas os intensivos podem ser concluídos em menos
+                                tempo. Fale com um de nossos consultores para um plano personalizado.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer class="footer">
+    <!-- Rodapé -->
+    <footer class="rodape">
         <div class="container">
-            <p>© <span id="year"></span> Rockfeller Language Center. Todos os direitos reservados.</p>
+            <p>© <span id="ano"></span> Rockfeller Language Center. Todos os direitos reservados.</p>
         </div>
     </footer>
-    
-    <div class="modal" id="enroll-modal">
-        <div class="modal__overlay js-close-modal"></div>
-        <div class="modal__content">
-            <button class="modal__close js-close-modal" aria-label="Fechar modal"><i data-lucide="x"></i></button>
+
+    <!-- Modal Matrícula -->
+    <div class="modal" id="modal-matricula">
+        <div class="sobreposicao-modal js-fechar-modal"></div>
+        <div class="conteudo-modal">
+            <button class="fechar-modal js-fechar-modal" aria-label="Fechar modal">×</button>
             <h2>Faça sua Matrícula</h2>
-            <p>Clique no botão abaixo para preencher o formulário de matrícula e o teste de nível. Nossa equipe entrará em contato em breve!</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdt1IiVCx9RWO6pQxPem1AbWioq41ASsak5heVsHQLKVW0q4w/viewform" target="_blank" class="btn btn--primary">Ir para o Formulário</a>
+            <p>Clique no botão abaixo para preencher o formulário de matrícula e o teste de nível. Nossa equipe entrará
+                em contato em breve!</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdt1IiVCx9RWO6pQxPem1AbWioq41ASsak5heVsHQLKVW0q4w/viewform"
+                target="_blank" class="botao botao-primario">Ir para o Formulário</a>
         </div>
     </div>
-    
-    <a href="#" class="fixed-cta js-open-modal">
-        <i data-lucide="edit-3"></i>
+
+    <!-- CTA Fixo -->
+    <a href="#" class="cta-fixo js-abrir-modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg>
         <span>Matricule-se</span>
     </a>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>

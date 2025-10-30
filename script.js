@@ -1,117 +1,102 @@
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Menu responsivo
+    const botaoMenu = document.getElementById('botao-menu');
+    const navegacaoCabecalho = document.querySelector('.cabecalho-navegacao');
+    const linksNavegacao = document.querySelectorAll('.cabecalho-link-navegacao');
 
-    lucide.createIcons();
-
-
-    const menuToggle = document.getElementById('menu-toggle');
-    const headerNav = document.querySelector('.header__nav');
-    const navLinks = document.querySelectorAll('.header__nav-link');
-
-    if (menuToggle && headerNav) {
-        menuToggle.addEventListener('click', () => {
-            headerNav.classList.toggle('is-open');
-
-            const icon = menuToggle.querySelector('i');
-            icon.setAttribute('data-lucide', headerNav.classList.contains('is-open') ? 'x' : 'menu');
-            lucide.createIcons();
+    if (botaoMenu && navegacaoCabecalho) {
+        botaoMenu.addEventListener('click', () => {
+            navegacaoCabecalho.classList.toggle('aberto');
         });
 
-
-        navLinks.forEach(link => {
+        linksNavegacao.forEach(link => {
             link.addEventListener('click', () => {
-                if (headerNav.classList.contains('is-open')) {
-                    headerNav.classList.remove('is-open');
-                    const icon = menuToggle.querySelector('i');
-                    icon.setAttribute('data-lucide', 'menu');
-                    lucide.createIcons();
+                if (navegacaoCabecalho.classList.contains('aberto')) {
+                    navegacaoCabecalho.classList.remove('aberto');
                 }
             });
         });
     }
 
-
-
-    const openModalButtons = document.querySelectorAll('.js-open-modal');
-    const closeModalButtons = document.querySelectorAll('.js-close-modal');
-    const modal = document.getElementById('enroll-modal');
+    // Modal
+    const abrirModalBotoes = document.querySelectorAll('.js-abrir-modal');
+    const fecharModalBotoes = document.querySelectorAll('.js-fechar-modal');
+    const modal = document.getElementById('modal-matricula');
 
     if (modal) {
-        openModalButtons.forEach(button => {
+        abrirModalBotoes.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
-                modal.classList.add('is-open');
+                modal.classList.add('aberto');
             });
         });
 
-        closeModalButtons.forEach(button => {
+        fecharModalBotoes.forEach(button => {
             button.addEventListener('click', () => {
-                modal.classList.remove('is-open');
+                modal.classList.remove('aberto');
             });
         });
     }
 
+    // Função para carrossel
+    function setupCarrossel(carrosselId, options = {}) {
+        const carrosselElemento = document.getElementById(carrosselId);
+        if (!carrosselElemento) return;
 
+        const trilha = carrosselElemento.querySelector('.trilha-heroi, .trilha-depoimentos');
+        const slides = Array.from(trilha.children);
+        const pontosContainer = carrosselElemento.querySelector('.pontos-carrossel');
+        const larguraSlide = slides[0].getBoundingClientRect().width;
+        let indiceAtual = 0;
+        let idIntervalo = null;
 
-    function setupCarousel(carouselId, options = {}) {
-        const carouselElement = document.getElementById(carouselId);
-        if (!carouselElement) return;
-
-        const track = carouselElement.querySelector('.hero__track, .testimonial__track');
-        const slides = Array.from(track.children);
-        const dotsContainer = carouselElement.querySelector('.carousel-dots');
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        let currentIndex = 0;
-        let intervalId = null;
-
-
-        if (dotsContainer) {
-            slides.forEach((_, index) => {
-                const button = document.createElement('button');
-                button.setAttribute('aria-label', `Go to slide ${index + 1}`);
-                if (index === 0) button.classList.add('active');
-                button.addEventListener('click', () => {
-                    moveToSlide(index);
+        if (pontosContainer) {
+            slides.forEach((_, indice) => {
+                const botao = document.createElement('button');
+                botao.setAttribute('aria-label', `Ir para slide ${indice + 1}`);
+                if (indice === 0) botao.classList.add('active');
+                botao.addEventListener('click', () => {
+                    moverParaSlide(indice);
                     if (options.autoplay) resetAutoplay();
                 });
-                dotsContainer.appendChild(button);
+                pontosContainer.appendChild(botao);
             });
         }
-        const dots = dotsContainer ? Array.from(dotsContainer.children) : [];
+        const pontos = pontosContainer ? Array.from(pontosContainer.children) : [];
 
-
-        slides.forEach((slide, index) => {
-            slide.style.left = slideWidth * index + 'px';
+        slides.forEach((slide, indice) => {
+            slide.style.left = larguraSlide * indice + 'px';
         });
 
-        function moveToSlide(targetIndex) {
-            track.style.transform = `translateX(-${slideWidth * targetIndex}px)`;
-            
-            if(dots.length > 0) {
-                dots[currentIndex].classList.remove('active');
-                dots[targetIndex].classList.add('active');
+        function moverParaSlide(indiceAlvo) {
+            trilha.style.transform = `translateX(-${larguraSlide * indiceAlvo}px)`;
+
+            if (pontos.length > 0) {
+                pontos[indiceAtual].classList.remove('active');
+                pontos[indiceAlvo].classList.add('active');
             }
 
-            currentIndex = targetIndex;
+            indiceAtual = indiceAlvo;
         }
-        
+
         function resetAutoplay() {
-            clearInterval(intervalId);
+            clearInterval(idIntervalo);
             if (options.autoplay) {
-                 intervalId = setInterval(() => {
-                    const nextIndex = (currentIndex + 1) % slides.length;
-                    moveToSlide(nextIndex);
-                }, options.autoplayDelay || 5000);
+                idIntervalo = setInterval(() => {
+                    const proximoIndice = (indiceAtual + 1) % slides.length;
+                    moverParaSlide(proximoIndice);
+                }, options.atrasoAutoplay || 5000);
             }
         }
-        
 
         window.addEventListener('resize', () => {
-            const newSlideWidth = slides[0].getBoundingClientRect().width;
-            track.style.transition = 'none'; // Disable transition during resize
-            track.style.transform = `translateX(-${newSlideWidth * currentIndex}px)`;
+            const novaLarguraSlide = slides[0].getBoundingClientRect().width;
+            trilha.style.transition = 'none';
+            trilha.style.transform = `translateX(-${novaLarguraSlide * indiceAtual}px)`;
             setTimeout(() => {
-              track.style.transition = ''; // Re-enable after resize
+                trilha.style.transition = '';
             }, 10);
         });
 
@@ -119,59 +104,56 @@ document.addEventListener('DOMContentLoaded', () => {
             resetAutoplay();
         }
     }
-    
 
-    setupCarousel('hero-carousel', { autoplay: true, autoplayDelay: 6000 });
-    setupCarousel('testimonial-carousel');
+    setupCarrossel('carrossel-heroi', {
+        autoplay: true,
+        atrasoAutoplay: 6000
+    });
+    setupCarrossel('carrossel-depoimentos');
 
+    // FAQ accordion
+    const itensFaq = document.querySelectorAll('.item-faq');
 
+    itensFaq.forEach(item => {
+        const pergunta = item.querySelector('.pergunta-faq');
+        const resposta = item.querySelector('.resposta-faq');
 
-    const faqItems = document.querySelectorAll('.faq__item');
+        pergunta.addEventListener('click', () => {
+            const estavaAtivo = item.classList.contains('active');
 
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq__question');
-        const answer = item.querySelector('.faq__answer');
-
-        question.addEventListener('click', () => {
-            const wasActive = item.classList.contains('active');
-
-
-            faqItems.forEach(i => {
+            itensFaq.forEach(i => {
                 i.classList.remove('active');
-                i.querySelector('.faq__answer').style.maxHeight = null;
+                i.querySelector('.resposta-faq').style.maxHeight = null;
             });
-            
 
-            if (!wasActive) {
+            if (!estavaAtivo) {
                 item.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
+                resposta.style.maxHeight = resposta.scrollHeight + 'px';
             }
         });
     });
 
+    // Revelar ao scroll
+    const elementosRevelar = document.querySelectorAll('.revelar');
 
-
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Stop observing after it's visible
+    const observador = new IntersectionObserver((entradas, observador) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('visible');
+                observador.unobserve(entrada.target);
             }
         });
     }, {
-        threshold: 0.1 // Trigger when 10% of the element is visible
+        threshold: 0.1
     });
 
-    revealElements.forEach(el => {
-        observer.observe(el);
+    elementosRevelar.forEach(el => {
+        observador.observe(el);
     });
 
-
-
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+    // Ano no rodapé
+    const anoSpan = document.getElementById('ano');
+    if (anoSpan) {
+        anoSpan.textContent = new Date().getFullYear();
     }
 });
