@@ -1,120 +1,177 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
 
-const hamb = document.getElementById("hamb");
-const mobileMenu = document.getElementById("mobileMenu");
 
-hamb.addEventListener("click", () => {
-  mobileMenu.classList.toggle("active");
-  
-  document.body.classList.toggle("no-scroll");
-});
+    lucide.createIcons();
 
-// Fecha o menu mobile ao clicar em um link
-document.querySelectorAll(".mobile-link").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
-    document.body.classList.remove("no-scroll");
-  });
-});
 
-/**
- * Função genérica para inicializar um carrossel com reinício do timer.
- * @param {string} trackId - O ID do elemento 'track' do carrossel.
- * @param {string} slideSelector - O seletor CSS para os slides dentro do track.
- * @param {string} controlsContainerSelector - O seletor CSS para o contêiner dos botões.
- * @param {string} dotClass - A classe CSS para os botões de navegação (dots).
- */
-function initializeCarousel(trackId, slideSelector, controlsContainerSelector, dotClass) {
-  const track = document.getElementById(trackId);
-  if (!track) return;
+    const menuToggle = document.getElementById('menu-toggle');
+    const headerNav = document.querySelector('.header__nav');
+    const navLinks = document.querySelectorAll('.header__nav-link');
 
-  const slides = track.querySelectorAll(slideSelector);
-  const controlsContainer = document.querySelector(controlsContainerSelector);
-  let currentIndex = 0;
-  let intervalId = null;
+    if (menuToggle && headerNav) {
+        menuToggle.addEventListener('click', () => {
+            headerNav.classList.toggle('is-open');
 
-  if (slides.length <= 1) return; // Não inicializa o carrossel se tiver 1 ou 0 slides
+            const icon = menuToggle.querySelector('i');
+            icon.setAttribute('data-lucide', headerNav.classList.contains('is-open') ? 'x' : 'menu');
+            lucide.createIcons();
+        });
 
-  // Cria os dots dinamicamente
-  if (controlsContainer) {
-    controlsContainer.innerHTML = ''; // Limpa para evitar duplicatas
-    for (let i = 0; i < slides.length; i++) {
-      const dot = document.createElement("button");
-      dot.classList.add(dotClass);
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => {
-        showSlide(i);
-        resetInterval(); // Reinicia o timer ao clicar
-      });
-      controlsContainer.appendChild(dot);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (headerNav.classList.contains('is-open')) {
+                    headerNav.classList.remove('is-open');
+                    const icon = menuToggle.querySelector('i');
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                }
+            });
+        });
     }
-  }
 
-  const dots = controlsContainer ? controlsContainer.querySelectorAll(`.${dotClass}`) : [];
 
-  function showSlide(i) {
-    currentIndex = i;
-    track.style.transform = `translateX(-${i * 100}%)`;
-    if (dots.length > 0) {
-      dots.forEach(d => d.classList.remove("active"));
-      dots[i].classList.add("active");
+
+    const openModalButtons = document.querySelectorAll('.js-open-modal');
+    const closeModalButtons = document.querySelectorAll('.js-close-modal');
+    const modal = document.getElementById('enroll-modal');
+
+    if (modal) {
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('is-open');
+            });
+        });
+
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.classList.remove('is-open');
+            });
+        });
     }
-  }
 
-  function startInterval() {
-    intervalId = setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }, 5000);
-  }
 
-  function resetInterval() {
-    clearInterval(intervalId);
-    startInterval();
-  }
 
-  startInterval(); // Inicia o carrossel automático
-}
+    function setupCarousel(carouselId, options = {}) {
+        const carouselElement = document.getElementById(carouselId);
+        if (!carouselElement) return;
 
-// Inicializa todos os carrosséis do site
-initializeCarousel("heroTrack", ".hero-slide", ".hero-controls", "dot");
-initializeCarousel("metodologiaTrack", ".metodologia-slide", ".metodologia-controls", "metodologia-dot");
-initializeCarousel("tsTrack", ".ts-item", ".ts-controls", "dot");
+        const track = carouselElement.querySelector('.hero__track, .testimonial__track');
+        const slides = Array.from(track.children);
+        const dotsContainer = carouselElement.querySelector('.carousel-dots');
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        let currentIndex = 0;
+        let intervalId = null;
 
-document.querySelectorAll(".faq-item").forEach(item => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("active");
-  });
+
+        if (dotsContainer) {
+            slides.forEach((_, index) => {
+                const button = document.createElement('button');
+                button.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                if (index === 0) button.classList.add('active');
+                button.addEventListener('click', () => {
+                    moveToSlide(index);
+                    if (options.autoplay) resetAutoplay();
+                });
+                dotsContainer.appendChild(button);
+            });
+        }
+        const dots = dotsContainer ? Array.from(dotsContainer.children) : [];
+
+
+        slides.forEach((slide, index) => {
+            slide.style.left = slideWidth * index + 'px';
+        });
+
+        function moveToSlide(targetIndex) {
+            track.style.transform = `translateX(-${slideWidth * targetIndex}px)`;
+            
+            if(dots.length > 0) {
+                dots[currentIndex].classList.remove('active');
+                dots[targetIndex].classList.add('active');
+            }
+
+            currentIndex = targetIndex;
+        }
+        
+        function resetAutoplay() {
+            clearInterval(intervalId);
+            if (options.autoplay) {
+                 intervalId = setInterval(() => {
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    moveToSlide(nextIndex);
+                }, options.autoplayDelay || 5000);
+            }
+        }
+        
+
+        window.addEventListener('resize', () => {
+            const newSlideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transition = 'none'; // Disable transition during resize
+            track.style.transform = `translateX(-${newSlideWidth * currentIndex}px)`;
+            setTimeout(() => {
+              track.style.transition = ''; // Re-enable after resize
+            }, 10);
+        });
+
+        if (options.autoplay) {
+            resetAutoplay();
+        }
+    }
+    
+
+    setupCarousel('hero-carousel', { autoplay: true, autoplayDelay: 6000 });
+    setupCarousel('testimonial-carousel');
+
+
+
+    const faqItems = document.querySelectorAll('.faq__item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq__question');
+        const answer = item.querySelector('.faq__answer');
+
+        question.addEventListener('click', () => {
+            const wasActive = item.classList.contains('active');
+
+
+            faqItems.forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq__answer').style.maxHeight = null;
+            });
+            
+
+            if (!wasActive) {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+
+
+
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Stop observing after it's visible
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    revealElements.forEach(el => {
+        observer.observe(el);
+    });
+
+
+
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 });
-
-const reveals = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-reveals.forEach(r => observer.observe(r));
-
-// Lógica do Modal de Matrícula
-const openModalBtns = document.querySelectorAll(".js-open-matricula");
-const closeModalBtn = document.getElementById("closeModalBtn");
-const matriculaOverlay = document.getElementById("matriculaOverlay");
-
-function openModal(e) {
-  e.preventDefault();
-  matriculaOverlay.classList.add("active");
-  document.body.classList.add("no-scroll");
-}
-
-function closeModal() {
-  matriculaOverlay.classList.remove("active");
-  document.body.classList.remove("no-scroll");
-}
-
-openModalBtns.forEach(btn => btn.addEventListener("click", openModal));
-closeModalBtn.addEventListener("click", closeModal);
-// Fecha o modal se clicar fora da área do formulário
-matriculaOverlay.addEventListener("click", (e) => { if (e.target === matriculaOverlay) closeModal(); });
