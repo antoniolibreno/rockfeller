@@ -1,5 +1,3 @@
-/* style.css */
-/* Tokens de Design */
 :root {
   --cor-primaria: #00529b;
   --cor-primaria-escura: #003c75;
@@ -32,7 +30,6 @@
   --transicao-base: all 0.3s ease-in-out;
 }
 
-/* Estilos Globais */
 *,
 *::before,
 *::after {
@@ -101,7 +98,6 @@ ul {
   list-style: none;
 }
 
-/* Layout e Utilitários */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -194,7 +190,7 @@ ul {
   transform: translateY(0);
 }
 
-/* Cabeçalho */
+
 .cabecalho {
   position: sticky;
   top: 0;
@@ -282,8 +278,6 @@ ul {
 .cabecalho-navegacao.aberto .hamburger span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
 }
-
-/* Herói */
 .heroi {
   position: relative;
   height: 90vh;
@@ -307,7 +301,7 @@ ul {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .trilha-heroi {
@@ -363,18 +357,17 @@ ul {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(124, 124, 124, 0.5);
   border: none;
   cursor: pointer;
   transition: var(--transicao-base);
 }
 
 .pontos-carrossel button.active {
-  background-color: var(--cor-branco);
-  transform: scale(1.2);
+  background-color: rgba(76, 76, 76, 0.756);
+  transform: scale(1.1);
 }
 
-/* Grade de Cartões */
 .grade-cartoes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -408,7 +401,6 @@ ul {
   margin-bottom: var(--espacamento-xs);
 }
 
-/* Grade de Destaques */
 .grade-destaques {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -449,7 +441,6 @@ ul {
   margin-bottom: var(--espacamento-xs);
 }
 
-/* Grade de Localização */
 .grade-localizacao {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -516,6 +507,9 @@ ul {
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
+  position: bottom;
+  flex-shrink: 0;
+  box-shadow: var(--sombra-media);
 }
 
 .autor-depoimento strong {
@@ -758,4 +752,14 @@ ul {
     justify-content: center;
     padding: 0;
   }
+}
+
+.imagens {
+  position: center;
+  width: 300px;
+  height: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

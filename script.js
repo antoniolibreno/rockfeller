@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupCarrossel('carrossel-heroi', {
         autoplay: true,
-        atrasoAutoplay: 6000
+        atrasoAutoplay: 4000
     });
     setupCarrossel('carrossel-depoimentos');
 
