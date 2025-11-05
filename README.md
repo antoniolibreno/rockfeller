@@ -1,79 +1,101 @@
-# LINK DO SANITY
-```
-https://github.com/antoniolibreno/sanity
-```
+## Links Úteis
+- **Repositório do Sanity no GitHub:** [https://github.com/antoniolibreno/sanity](https://github.com/antoniolibreno/sanity)
+- **Documentação do Projeto:** [https://docs.google.com/document/d/1IdAJWIq6qyB4R9irDEIZaj65IVJ8dmDAbtXvEgwK4mQ/edit?usp=sharing](https://docs.google.com/document/d/1IdAJWIq6qyB4R9irDEIZaj65IVJ8dmDAbtXvEgwK4mQ/edit?usp=sharing)
 
-# Configurar o Git - LER O FINAL DO README!!!
+## Configuração Inicial (Faça isso apenas na primeira vez)
+Configure suas credenciais globais no Git para que seus commits sejam atribuídos corretamente.
 
-### Link do docs com a documentação: https://docs.google.com/document/d/1IdAJWIq6qyB4R9irDEIZaj65IVJ8dmDAbtXvEgwK4mQ/edit?usp=sharing
-
-## Configuração inicial - fazer isso somente na primeira vez
 ```bash
-git config --global user.name "SEU-NOME"
-git config --global user.email "seu@exemplo.com"
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
 ```
 
----
+**Dica:** Use o mesmo email cadastrado no GitHub para evitar problemas de autenticação.
 
-## Clonar repositório - fazer isso somente na primeira vez
+## Clonando o Repositório (Faça isso apenas na primeira vez)
+Baixe o repositório para o seu computador local.
+
 ```bash
-git clone https://github.com/usuario/repositorio.git
-cd repositorio
+git clone https://github.com/antoniolibreno/sanity.git
+cd sanity
 ```
 
----
+## Atualizando o Repositório Local
+Antes de começar a trabalhar, sempre atualize sua cópia local para evitar conflitos.
 
-## Atualizar repositório local
 ```bash
-git fetch
-git pull
-
-Toda vez que for acessar o arquivo pega e executa esse código para ver se teve alguma outra alteração feita, se tiver, da um 'git pull' para puxar ele
+git fetch  # Baixa as atualizações remotas sem aplicar
+git pull   # Aplica as atualizações no branch atual
 ```
 
----
+**Dica:** Execute isso toda vez que for trabalhar no projeto para sincronizar com as alterações da equipe.
 
-## Mudar de branch
+## Trabalhando com Branches
+Branches ajudam a isolar alterações e evitar bagunçar o branch principal (geralmente `main` ou `master`).
+
+### Mudando para uma Branch Existente
 ```bash
 git checkout nome-da-branch
 ```
 
-## Criar nova branch
+### Criando uma Nova Branch
+Crie uma branch nova para cada feature ou correção.
+
 ```bash
 git checkout -b nome-da-branch
-
-Resumidamente, se for fazer alguma alteração, cria uma nova branch, comenta no WhatsApp que criou uma nova branch + o nome dela e boa
 ```
 
----
+**Regra da Equipe:** Ao criar uma branch, avise no grupo do WhatsApp com o nome da branch e um breve resumo do que você vai fazer (ex: "Criei branch 'feature-login' para implementar o login").
 
-## Adicionar alterações
+## Adicionando e Commitando Alterações
+Após editar arquivos, adicione-os ao staging e crie um commit.
+
+### Adicionando Alterações
 ```bash
-git add .
+git add .  # Adiciona todos os arquivos alterados (use com cuidado!)
 ```
 
----
-
-## Criar commit
+Ou adicione arquivos específicos:
 ```bash
-git commit -m "mensagem do commit"
+git add caminho/do/arquivo.ext
 ```
 
----
+### Criando um Commit
+```bash
+git commit -m "Mensagem descritiva do commit"
+```
 
----
+**Dica:** Use mensagens claras e concisas, como "Adiciona funcionalidade de login" ou "Corrige bug no formulário".
 
-## Ver status
+## Verificando o Status
+Veja o estado atual do seu repositório (arquivos alterados, staged, etc.).
+
 ```bash
 git status
 ```
 
-## Enviar alterações para o repositório remoto
+## Enviando Alterações para o Repositório Remoto
+Após commits locais, envie para o GitHub.
+
 ```bash
 git push
 ```
 
-# Feitas as alterações, manda mensagem dentro do grupo do WhatsApp dizendo qual branch foi criada, o que fez de alteração (um breve comentário sobre) para termos esse controle.
-## Uma boa prática para ser feita é sempre executar o 'git fetch' antes de qualquer coisa e também um 'git status'. Caso você dê 'git status' e tenha algum arquivo que você não queira iniciar a codificação com, execute 'git reset --hard' para resetar e começar sem nenhum arquivo previamente alterado.
+Se for a primeira vez enviando uma branch nova:
+```bash
+git push -u origin nome-da-branch
+```
 
-# QUALQUER DÚVIDA PODE MANDAR MENSAGEM!!
+**Após Push:** Avise no grupo do WhatsApp: qual branch, o que foi alterado (breve comentário) e se precisa de review.
+
+## Boas Práticas
+- **Sempre comece com `git fetch` e `git status`:** Isso garante que você está atualizado e vê o que foi alterado localmente.
+- **Resetando Alterações Indesejadas:** Se `git status` mostrar arquivos que você não quer, resete:
+  ```bash
+  git reset --hard
+  ```
+  **Cuidado:** Isso descarta alterações locais não commitadas!
+- **Evite Conflitos:** Atualize (`git pull`) antes de pushar. Se houver conflitos, resolva manualmente.
+- **Commits Pequenos:** Faça commits frequentes e atômicos (uma mudança por commit).
+- **Pull Requests:** Para merges no branch principal, crie um Pull Request no GitHub e avise a equipe para review.
+- **Segurança:** Não commite senhas ou dados sensíveis. Use `.gitignore` para ignorar arquivos desnecessários.
