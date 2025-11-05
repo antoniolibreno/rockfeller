@@ -62,4 +62,6 @@ export function buildImageUrl(assetRef, width = 800) {
     }
     const filename = imageIdAndFormat.substring(0, lastDashIndex) + '.' + imageIdAndFormat.substring(lastDashIndex + 1);
     return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${filename}?w=${width}&auto=format&fit=crop`;
-}
+
+
+  }
