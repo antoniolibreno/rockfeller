@@ -157,3 +157,51 @@ document.addEventListener('DOMContentLoaded', () => {
         anoSpan.textContent = new Date().getFullYear();
     }
 });
+
+
+
+async function carregarCursos() {
+    const url = "https://owkl9cwl.api.sanity.io/v2025-11-04/data/query/production?query=*%0A%5B_type+%3D%3D+%27curso%27%5D%0A%7B%0A++nome%2C%0A++descricao%2C%0A++%22imagemRef%22%3Aimagem.asset._ref%0A%7D&perspective=drafts"; // substitua pela URL da sua API Sanity
+    const response = await fetch(url, {
+        method: "GET",
+    });
+
+    const json = await response.json();
+    const result = json.result;
+
+    const gradeCartoes = document.querySelector(".grade-cartoes");
+    // gradeCartoes.innerHTML = ""; // limpa os cards existentes
+
+    for (let index = 0; index < result.length; index++) {
+        const element = result[index];
+        console.log(element);
+
+        // Monta a URL da imagem do Sanity
+        const imagemUrl = `https://cdn.sanity.io/images/owkl9cwl/production/${element.imagemRef.split('-')[1]}-${element.imagemRef.split('-')[2]}.${element.imagemRef.split('-')[3]}`;
+
+        // Cria os elementos
+        const divCartao = document.createElement("div");
+        divCartao.classList.add("cartao");
+
+        const img = document.createElement("img");
+        img.classList.add("imagens");
+        img.src = imagemUrl;
+        img.alt = element.nome;
+
+        const divCorpo = document.createElement("div");
+        divCorpo.classList.add("corpo-cartao");
+
+        const h3 = document.createElement("h3");
+        h3.innerText = element.nome;
+
+        const p = document.createElement("p");
+        p.innerText = element.descricao || "Descrição indisponível.";
+
+        // Monta o card
+        divCorpo.append(h3, p);
+        divCartao.append(img, divCorpo);
+        gradeCartoes.append(divCartao);
+    }
+}
+
+carregarCursos();
