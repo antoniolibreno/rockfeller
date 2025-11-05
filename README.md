@@ -1,5 +1,5 @@
 ## Links Úteis
-- **Repositório do Sanity no GitHub:** [https://github.com/antoniolibreno/sanity](https://github.com/antoniolibreno/sanity](https://github.com/antoniolibreno/sanity-rockfeller))
+- **Repositório do Sanity no GitHub:** https://github.com/antoniolibreno/sanity-rockfeller
 - **Documentação do Projeto:** [https://docs.google.com/document/d/1IdAJWIq6qyB4R9irDEIZaj65IVJ8dmDAbtXvEgwK4mQ/edit?usp=sharing](https://docs.google.com/document/d/1IdAJWIq6qyB4R9irDEIZaj65IVJ8dmDAbtXvEgwK4mQ/edit?usp=sharing)
 
 ## Configuração Inicial (Faça isso apenas na primeira vez)
