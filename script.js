@@ -252,6 +252,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     carregarConteudoSanity();
-
-
-}); 
+  }); 
