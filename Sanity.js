@@ -21,8 +21,7 @@ export const ALL_CONTENT_QUERY = `{
     "feedbacks": *[_type == "feedback"] {
       depoimento,
       autor,
-      cargo,
-      "imagemAutorRef": imagem.asset._ref
+      "imagemAutorRef": FotoAluno.asset._ref
     },
     "clientes": *[_type == "cliente"] {
       Nome, 
