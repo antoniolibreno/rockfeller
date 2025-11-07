@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 popularCursos(data.result.cursos);
                 popularMetodologia(data.result.metodologia);
                 popularFeedbacks(data.result.feedbacks);
+                popularFaq(data.result.faq);
                 setupCarrossel('carrossel-depoimentos');
             }
 
@@ -251,5 +252,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+    function popularFaq(faq) {
+        if (!faq) {
+            console.warn("Nenhum dado de 'faq' recebido. Verifique se publicou no Sanity.");
+            return;
+        }
+
+        const itensFaqHtml = document.querySelectorAll('.item-faq');
+
+        if (itensFaqHtml.length > 0 && faq.pergunta1 && faq.resposta1) {
+            itensFaqHtml[0].querySelector('.pergunta-faq span').textContent = faq.pergunta1;
+            itensFaqHtml[0].querySelector('.resposta-faq p').textContent = faq.resposta1;
+        }
+
+        if (itensFaqHtml.length > 1 && faq.pergunta2 && faq.resposta2) {
+            itensFaqHtml[1].querySelector('.pergunta-faq span').textContent = faq.pergunta2;
+            itensFaqHtml[1].querySelector('.resposta-faq p').textContent = faq.resposta2;
+        }
+
+        if (itensFaqHtml.length > 2 && faq.pergunta3 && faq.resposta3) {
+            itensFaqHtml[2].querySelector('.pergunta-faq span').textContent = faq.pergunta3;
+            itensFaqHtml[2].querySelector('.resposta-faq p').textContent = faq.resposta3;
+        }
+    }
+
     carregarConteudoSanity();
-  }); 
+  });

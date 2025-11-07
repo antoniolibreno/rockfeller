@@ -23,6 +23,14 @@ export const ALL_CONTENT_QUERY = `{
       autor,
       "imagemAutorRef": FotoAluno.asset._ref
     },
+    "faq": *[_type == "faq"][0] {
+      pergunta1,
+      resposta1,
+      pergunta2,
+      resposta2,
+      pergunta3,
+      resposta3
+    },
     "clientes": *[_type == "cliente"] {
       Nome, 
       Telefone, 
@@ -32,22 +40,11 @@ export const ALL_CONTENT_QUERY = `{
     }
 }`;
 
-/**
- * Constrói a URL completa para fazer a consulta GROQ no Sanity.
- * @param {string} groqQuery - A consulta GROQ
- * @returns {string} - A URL da API
- */
 export function buildQueryUrl(groqQuery) {
     const encodedQuery = encodeURIComponent(groqQuery);
     return `https://${SANITY_PROJECT_ID}.api.sanity.io/${SANITY_API_VERSION}/data/query/${SANITY_DATASET}?query=${encodedQuery}`;
 }
 
-/**
- * Constrói a URL pública de uma imagem da CDN do Sanity a partir de uma referência de asset.
- * @param {string} assetRef - A referência do asset (ex: "image-a1b2c3d4-500x300-jpg")
- * @param {number} [width=800] - A largura desejada para a imagem
- * @returns {string} - A URL completa da imagem
- */
 export function buildImageUrl(assetRef, width = 800) {
     if (!assetRef || typeof assetRef !== 'string' || !assetRef.startsWith('image-')) {
         console.warn('Asset reference inválido:', assetRef);
