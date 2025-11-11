@@ -41,23 +41,23 @@ export const ALL_CONTENT_QUERY = `{
 }`;
 
 export function buildQueryUrl(groqQuery) {
-    const encodedQuery = encodeURIComponent(groqQuery);
-    return `https://${SANITY_PROJECT_ID}.api.sanity.io/${SANITY_API_VERSION}/data/query/${SANITY_DATASET}?query=${encodedQuery}`;
+  const encodedQuery = encodeURIComponent(groqQuery);
+  return `https://${SANITY_PROJECT_ID}.api.sanity.io/${SANITY_API_VERSION}/data/query/${SANITY_DATASET}?query=${encodedQuery}`;
 }
 
 export function buildImageUrl(assetRef, width = 800) {
-    if (!assetRef || typeof assetRef !== 'string' || !assetRef.startsWith('image-')) {
-        console.warn('Asset reference inválido:', assetRef);
-        return '';
-    }
-    const imageIdAndFormat = assetRef.substring(6);
-    const lastDashIndex = imageIdAndFormat.lastIndexOf('-');
-    if (lastDashIndex === -1) {
-        console.warn('Formato de asset reference inválido:', assetRef);
-        return '';
-    }
-    const filename = imageIdAndFormat.substring(0, lastDashIndex) + '.' + imageIdAndFormat.substring(lastDashIndex + 1);
-    return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${filename}?w=${width}&auto=format&fit=crop`;
-
-  
+  if (!assetRef || typeof assetRef !== 'string' || !assetRef.startsWith('image-')) {
+    console.warn('Asset reference inválido:', assetRef);
+    return '';
   }
+  const imageIdAndFormat = assetRef.substring(6);
+  const lastDashIndex = imageIdAndFormat.lastIndexOf('-');
+  if (lastDashIndex === -1) {
+    console.warn('Formato de asset reference inválido:', assetRef);
+    return '';
+  }
+  const filename = imageIdAndFormat.substring(0, lastDashIndex) + '.' + imageIdAndFormat.substring(lastDashIndex + 1);
+  return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${filename}?w=${width}&auto=format&fit=crop`;
+
+
+}

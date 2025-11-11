@@ -1,4 +1,8 @@
-import { ALL_CONTENT_QUERY, buildQueryUrl, buildImageUrl } from './Sanity.js';
+import {
+    ALL_CONTENT_QUERY,
+    buildQueryUrl,
+    buildImageUrl
+} from './Sanity.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -46,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const trilha = carrosselElemento.querySelector('.trilha-heroi, .trilha-depoimentos');
         const slides = Array.from(trilha.children);
         const pontosContainer = carrosselElemento.querySelector('.pontos-carrossel');
-        
+
         if (slides.length === 0) return;
         let larguraSlide = slides.length > 0 ? slides[0].getBoundingClientRect().width : window.innerWidth;
         if (larguraSlide === 0) larguraSlide = window.innerWidth;
@@ -75,14 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function moverParaSlide(indiceAlvo) {
             if (!trilha || indiceAlvo < 0 || indiceAlvo >= slides.length) return;
-            
+
             larguraSlide = slides[0].getBoundingClientRect().width;
-            
+
             trilha.style.transform = `translateX(-${larguraSlide * indiceAlvo}px)`;
 
             if (pontos.length > 0) {
-                if(pontos[indiceAtual]) pontos[indiceAtual].classList.remove('active');
-                if(pontos[indiceAlvo]) pontos[indiceAlvo].classList.add('active');
+                if (pontos[indiceAtual]) pontos[indiceAtual].classList.remove('active');
+                if (pontos[indiceAlvo]) pontos[indiceAlvo].classList.add('active');
             }
             indiceAtual = indiceAlvo;
         }
@@ -139,7 +143,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 observador.unobserve(entrada.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, {
+        threshold: 0.1
+    });
     elementosRevelar.forEach(el => {
         observador.observe(el);
     });
@@ -147,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (anoSpan) {
         anoSpan.textContent = new Date().getFullYear();
     }
-    
+
     async function carregarConteudoSanity() {
         console.log("Iniciando busca no Sanity...");
         const url = buildQueryUrl(ALL_CONTENT_QUERY);
@@ -158,10 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            
+
             if (data && data.result) {
                 console.log('Dados recebidos do Sanity:', data.result);
-                
+
                 popularCarrossel(data.result.carrossel);
                 popularCursos(data.result.cursos);
                 popularMetodologia(data.result.metodologia);
@@ -181,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cursoIntensivo = cursos.find(c => c.nome === 'Inglês Intensivo');
         if (cursoIntensivo && cursoIntensivo.imagemRef) {
             const imgElement = document.getElementById('img-curso-intensivo');
-            if (imgElement) imgElement.src = buildImageUrl(cursoIntensivo.imagemRef, 400); 
+            if (imgElement) imgElement.src = buildImageUrl(cursoIntensivo.imagemRef, 400);
         }
 
         const cursoConversacao = cursos.find(c => c.nome === 'Conversação');
@@ -189,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imgElement = document.getElementById('img-curso-conversacao');
             if (imgElement) imgElement.src = buildImageUrl(cursoConversacao.imagemRef, 400);
         }
-        
+
         const cursoTeens = cursos.find(c => c.nome === 'Teens & Kids');
         if (cursoTeens && cursoTeens.imagemRef) {
             const imgElement = document.getElementById('img-curso-teens');
@@ -209,28 +215,29 @@ document.addEventListener('DOMContentLoaded', () => {
             if (carrossel.imagem3Ref) slides[2].style.backgroundImage = `url('${buildImageUrl(carrossel.imagem3Ref, 1920)}')`;
         }
     }
-    
-   function popularMetodologia(metodologia) {
-    if (!metodologia) return;
 
-    if (metodologia.metodologiaImagem1Ref) {
-        const imgElement1 = document.getElementById('metodologia-img-1');
-        if (imgElement1) imgElement1.src = buildImageUrl(metodologia.metodologiaImagem1Ref, 600);
+    function popularMetodologia(metodologia) {
+        if (!metodologia) return;
+
+        if (metodologia.metodologiaImagem1Ref) {
+            const imgElement1 = document.getElementById('metodologia-img-1');
+            if (imgElement1) imgElement1.src = buildImageUrl(metodologia.metodologiaImagem1Ref, 600);
+        }
+        if (metodologia.metodologiaImagem2Ref) {
+            const imgElement2 = document.getElementById('metodologia-img-2');
+            if (imgElement2) imgElement2.src = buildImageUrl(metodologia.metodologiaImagem2Ref, 600);
+        }
     }
-    if (metodologia.metodologiaImagem2Ref) {
-        const imgElement2 = document.getElementById('metodologia-img-2');
-        if (imgElement2) imgElement2.src = buildImageUrl(metodologia.metodologiaImagem2Ref, 600);
-    }
-}
+
     function popularFeedbacks(feedbacks) {
         if (!feedbacks || feedbacks.length === 0) {
             console.warn("Nenhum feedback recebido do Sanity.");
             return;
         }
         const cartoes = document.querySelectorAll('#depoimentos .cartao-depoimento');
-        if(cartoes.length === 0) {
-             console.warn("Nenhum elemento .cartao-depoimento encontrado no HTML.");
-             return;
+        if (cartoes.length === 0) {
+            console.warn("Nenhum elemento .cartao-depoimento encontrado no HTML.");
+            return;
         }
         const maxItems = Math.min(cartoes.length, feedbacks.length);
 
@@ -278,4 +285,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     carregarConteudoSanity();
-  });
+});
