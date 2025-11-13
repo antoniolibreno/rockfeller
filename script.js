@@ -1,8 +1,27 @@
-import {
-    ALL_CONTENT_QUERY,
-    buildQueryUrl,
-    buildImageUrl
-} from './Sanity.js';
+const SANITY_PROJECT_ID = 'owkl9cwl';
+const SANITY_DATASET = 'production';
+
+function buildImageUrl(ref, width) {
+    if (!ref) {
+        return '';
+    }
+    const parts = ref.split('-');
+    if (parts[0] !== 'image' || parts.length < 3) {
+        console.warn('Referência de imagem Sanity mal formatada:', ref);
+        return '';
+    }
+    const assetId = parts[1];
+    const dimensions = parts[2];
+    const format = parts[3];
+    const filename = `${assetId}-${dimensions}.${format}`;
+    let imageUrl = `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${filename}`;
+    if (width) {
+        imageUrl += `?w=${width}&auto=format`;
+    } else {
+        imageUrl += `?auto=format`;
+    }
+    return imageUrl;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -156,7 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function carregarConteudoSanity() {
         console.log("Iniciando busca no Sanity...");
-        const url = buildQueryUrl(ALL_CONTENT_QUERY);
+
+        const url = 'https://owkl9cwl.api.sanity.io/v2025-11-04/data/query/production?query=%7B%0A++++%22carrossel%22%3A+*%5B_type+%3D%3D+%22carrossel%22%5D%5B0%5D+%7B+%0A++++++++%22imagem1Ref%22%3A+imagem1.asset._ref%2C+%0A++++++++%22imagem2Ref%22%3A+imagem2.asset._ref%2C+%0A++++++++%22imagem3Ref%22%3A+imagem3.asset._ref+%0A++++%7D%2C%0A++++%22cursos%22%3A+*%5B_type+%3D%3D+%22curso%22%5D+%7C+order%28nome+asc%29+%7B%0A++++++nome%2C+%0A++++++duracao%2C+%0A++++++nivel%2C+%0A++++++%22imagemRef%22%3A+imagem.asset._ref%0A++++%7D%2C%0A++++%22metodologia%22%3A+*%5B_type+%3D%3D+%22metodologia%22%5D%5B0%5D+%7B%0A++++++%22metodologiaImagem1Ref%22%3A+metodologiaImagem1.asset._ref%2C+%0A++++++%22metodologiaImagem2Ref%22%3A+metodologiaImagem2.asset._ref%0A++++%7D%2C%0A++++%22feedbacks%22%3A+*%5B_type+%3D%3D+%22feedback%22%5D+%7B%0A++++++depoimento%2C+%0A++++++autor%2C+%0A++++++%22imagemAutorRef%22%3A+FotoAluno.asset._ref%0A++++%7D%2C%0A++++%22faq%22%3A+*%5B_type+%3D%3D+%22faq%22%5D%5B0%5D+%7B%0A++++++pergunta1%2C+%0A++++++resposta1%2C+%0A++++++pergunta2%2C+%0A++++++resposta2%2C+%0A++++++pergunta3%2C+%0A++++++resposta3%0A++++%7D%2C%0A++++%22clientes%22%3A+*%5B_type+%3D%3D+%22cliente%22%5D+%7B%0A++++++Nome%2C+%0A++++++Telefone%2C+%0A++++++Email%2C+%0A++++++Nivel%2C+%0A++++++Idade+%0A++++%7D%0A%7D&perspective=published';
 
         try {
             const response = await fetch(url);
@@ -182,25 +202,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function popularCursos(cursos) {
-        if (!cursos || cursos.length === 0) return;
-
-        const cursoIntensivo = cursos.find(c => c.nome === 'Inglês Intensivo');
-        if (cursoIntensivo && cursoIntensivo.imagemRef) {
-            const imgElement = document.getElementById('img-curso-intensivo');
-            if (imgElement) imgElement.src = buildImageUrl(cursoIntensivo.imagemRef, 400);
+        if (!cursos || cursos.length === 0) {
+            console.warn("PopularCursos: Nenhum curso recebido do Sanity.");
+            return;
         }
+        console.log("PopularCursos: Dados dos cursos recebidos:", cursos);
 
-        const cursoConversacao = cursos.find(c => c.nome === 'Conversação');
-        if (cursoConversacao && cursoConversacao.imagemRef) {
-            const imgElement = document.getElementById('img-curso-conversacao');
-            if (imgElement) imgElement.src = buildImageUrl(cursoConversacao.imagemRef, 400);
-        }
+        const mapaCursosHtml = {
+            'KIDS':'img-curso1',
+            'TEENS':'img-curso2',
+            'ADULTS': 'img-curso3'
+        };
 
-        const cursoTeens = cursos.find(c => c.nome === 'Teens & Kids');
-        if (cursoTeens && cursoTeens.imagemRef) {
-            const imgElement = document.getElementById('img-curso-teens');
-            if (imgElement) imgElement.src = buildImageUrl(cursoTeens.imagemRef, 400);
-        }
+        cursos.forEach(curso => {
+            const nomeCurso = curso.nome;
+            const idElementoHtml = mapaCursosHtml[nomeCurso];
+
+            if (idElementoHtml && curso.imagemRef) {
+                const imgElement = document.getElementById(idElementoHtml);
+
+                if (imgElement) {
+                    imgElement.src = buildImageUrl(curso.imagemRef, 400);
+                    console.log(`PopularCursos: Imagem para '${nomeCurso}' definida no elemento '#${idElementoHtml}'`);
+                } else {
+                    console.warn(`PopularCursos: O ID '#${idElementoHtml}' (para o curso '${nomeCurso}') não foi encontrado no seu HTML.`);
+                }
+            }
+        });
     }
 
     function popularCarrossel(carrossel) {
