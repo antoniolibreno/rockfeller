@@ -343,31 +343,6 @@ ul {
   gap: var(--espacamento-sm);
 }
 
-.pontos-carrossel {
-  position: absolute;
-  bottom: var(--espacamento-md);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: var(--espacamento-xs);
-  z-index: 5;
-}
-
-.pontos-carrossel button {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: rgba(124, 124, 124, 0.5);
-  border: none;
-  cursor: pointer;
-  transition: var(--transicao-base);
-}
-
-.pontos-carrossel button.active {
-  background-color: rgba(76, 76, 76, 0.756);
-  transform: scale(1.1);
-}
-
 .grade-cartoes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -412,6 +387,7 @@ ul {
   border-radius: var(--raio-borda);
   box-shadow: var(--sombra-media);
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .conteudo-grade-destaques {
