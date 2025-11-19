@@ -292,56 +292,6 @@ function popularCarrossel(carrossel) {
     }
 }
 
-function popularMetodologia(metodologia) {
-    if (!metodologia) return;
-
-    // Atualiza as imagens
-    if (metodologia.metodologiaImagem1Ref) {
-        const imgElement1 = document.getElementById('metodologia-img-1');
-        if (imgElement1) imgElement1.src = buildImageUrl(metodologia.metodologiaImagem1Ref, 600);
-    }
-
-    if (metodologia.metodologiaImagem2Ref) {
-        const imgElement2 = document.getElementById('metodologia-img-2');
-        if (imgElement2) imgElement2.src = buildImageUrl(metodologia.metodologiaImagem2Ref, 600);
-    }
-
-    // Atualiza os itens de destaque dinamicamente
-    const itensDestaque = document.querySelectorAll('.item-destaque');
-
-    if (itensDestaque.length >= 3) {
-        // Item 1
-        if (metodologia.titulo1) {
-            const h3_1 = itensDestaque[0].querySelector('h3');
-            if (h3_1) h3_1.textContent = metodologia.titulo1;
-        }
-        if (metodologia.descricao1) {
-            const p_1 = itensDestaque[0].querySelector('p');
-            if (p_1) p_1.textContent = metodologia.descricao1;
-        }
-
-        // Item 2
-        if (metodologia.titulo2) {
-            const h3_2 = itensDestaque[1].querySelector('h3');
-            if (h3_2) h3_2.textContent = metodologia.titulo2;
-        }
-        if (metodologia.descricao2) {
-            const p_2 = itensDestaque[1].querySelector('p');
-            if (p_2) p_2.textContent = metodologia.descricao2;
-        }
-
-        // Item 3
-        if (metodologia.titulo3) {
-            const h3_3 = itensDestaque[2].querySelector('h3');
-            if (h3_3) h3_3.textContent = metodologia.titulo3;
-        }
-        if (metodologia.descricao3) {
-            const p_3 = itensDestaque[2].querySelector('p');
-            if (p_3) p_3.textContent = metodologia.descricao3;
-        }
-    }
-}
-
 function popularFeedbacks(feedbacks) {
     if (!feedbacks || feedbacks.length === 0) {
         console.warn("Nenhum feedback recebido.");
@@ -433,4 +383,53 @@ function popularFaq(faqList) {
             }
         }
     });
+}
+
+function popularMetodologia(metodologia) {
+    if (!metodologia) {
+        console.warn("Nenhum dado de 'metodologia' recebido.");
+        return;
+    }
+
+    // Atualiza as imagens
+    if (metodologia.metodologiaImagem1Ref) {
+        const imgElement1 = document.getElementById('metodologia-img-1');
+        if (imgElement1) {
+            imgElement1.src = buildImageUrl(metodologia.metodologiaImagem1Ref, 600);
+            imgElement1.style.display = 'block';
+        }
+    }
+
+    if (metodologia.metodologiaImagem2Ref) {
+        const imgElement2 = document.getElementById('metodologia-img-2');
+        if (imgElement2) {
+            imgElement2.src = buildImageUrl(metodologia.metodologiaImagem2Ref, 600);
+            imgElement2.style.display = 'block';
+        }
+    }
+
+    // Atualiza os textos dos itens de destaque
+    const itensDestaque = document.querySelectorAll('.item-destaque');
+
+    if (itensDestaque.length >= 3) {
+        // Item 1 - Conversação
+        const h3_1 = itensDestaque[0].querySelector('h3');
+        const p_1 = itensDestaque[0].querySelector('p');
+        if (h3_1 && metodologia.titulo1) h3_1.textContent = metodologia.titulo1;
+        if (p_1 && metodologia.descricao1) p_1.textContent = metodologia.descricao1;
+
+        // Item 2 - Turmas Reduzidas
+        const h3_2 = itensDestaque[1].querySelector('h3');
+        const p_2 = itensDestaque[1].querySelector('p');
+        if (h3_2 && metodologia.titulo2) h3_2.textContent = metodologia.titulo2;
+        if (p_2 && metodologia.descricao2) p_2.textContent = metodologia.descricao2;
+
+        // Item 3 - Material Didático
+        const h3_3 = itensDestaque[2].querySelector('h3');
+        const p_3 = itensDestaque[2].querySelector('p');
+        if (h3_3 && metodologia.titulo3) h3_3.textContent = metodologia.titulo3;
+        if (p_3 && metodologia.descricao3) p_3.textContent = metodologia.descricao3;
+    } else {
+        console.warn(`Esperado 3 itens de destaque, mas encontrado ${itensDestaque.length}`);
+    }
 }

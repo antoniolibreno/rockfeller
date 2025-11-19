@@ -411,6 +411,7 @@
       border-radius: var(--raio-borda);
       box-shadow: var(--sombra-media);
       width: 100%;
+      margin-bottom: 20px;
     }
 
     .conteudo-grade-destaques {
